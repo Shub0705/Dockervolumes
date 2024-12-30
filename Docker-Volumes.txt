@@ -1,0 +1,44 @@
+
+-------------------------type 1 to create volume ------------------------------------------------------------------
+
+sudo yum install docker -y
+sudo systemctl start docker
+sudo systemctl enable docker
+sudo docker volume create black
+sudo su
+cd
+cd /var/lib/docker/volumes
+sudo docker run -d -v (any name):/usr/share/nginx/html -P nginx
+cd /var/lib/docker/volumes/--------{to check volume create}
+sudo docker exec -it (container id) bash
+cd /usr/share/nginx/html/
+ls
+echo "hello shubham1 to shubham 2" > index.html
+{hit IP on browser}
+cd 
+exit
+cd /var/lib/docker/volumes/
+ls
+cd (directory name)
+cd _data/
+vim index.html (edit)
+{hit IP on browser}
+
+type 1 to create volume --------------------------------------------end
+
+Type 2 volume-create------------------------------------start
+sudo mkdir fan 
+cd fan
+sudo docker ps -a
+sudo docker run -d -v (name):/usr/share/nginx/html --name (name1) -P nginx
+cd
+sudo su
+cd
+cd /var/lib/docker/volumes/
+ls
+cd (directory that you make )
+ls
+cd _data/
+vim index.html(make changes)
+hit ip on browser
+
