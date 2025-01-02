@@ -1,0 +1,21 @@
+sudo yum install docker -y
+sudo systemctl start docker
+sudo systemctl enble docker 
+sudo yum install git -y
+git clone 
+vim dockerfile
+FROM maven:3.9.9-amazoncorretto-8-alpine AS Builder
+COPY student-ui /student-ui/.
+WORKDIR student-ui
+RUN mvn clean package
+
+FROM tomcat:jre8-alpine
+COPY --from=Builder /student-ui/target/*.war webapps/student.war
+
+:wq!
+ls
+sudo docker build -t demo(any name) .
+sudo docker images
+sudo docker run -d -P (images id)
+sudo docker ps -a
+(Number that show port 32769 hit in url)
