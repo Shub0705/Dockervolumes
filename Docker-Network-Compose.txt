@@ -1,0 +1,63 @@
+1)What is docker-Network?
+-->allows users to connect Docker containers to networks and communicate with them
+---------- 7 types of network-----------
+-Bridge networks: Used within a single host.
+-Overlay networks: Used for communication between multiple hosts. 
+-Macvlan networks: Used to connect Docker containers directly to host network interfaces.
+-IPvLAN: Provides full control over IPv4 and IPv6 addressing
+-None: Completely isolates a container from the host and other containers.
+-Mesos: server and client to control container networking
+-Host: Containers that use the host network mode share the host's network stack without isolation
+
+2)What is docker-Compose?
+--->a tool that helps to run multi-container applications on Docker.Spin up & spin down
+#sudo yum install docker -y
+#sudo systemctl start docker
+#sudo systemctl enable docker 
+#sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose 
+#sudo chmod +x /usr/local/bin/docker-compose
+#docker-compose --version 	
+#vim docker-compose.yaml
+version: '3'
+services:
+  app:
+    image: 'nginx'
+    ports:
+       - "80:80"
+#sudo docker-compose up -d
+#sudo docker-compose down
+#vim docker-compose.yaml
+version: '3'
+services:
+  app:
+    image: 'nginx'
+    ports:
+      - "80:80"
+  web:
+    image: 'httpd'
+    ports:
+      - "8080:80"
+#sudo docker-compose up -d
+#sudo docker-compose down
+version: '3'
+services:
+  app:
+    image: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - myvol:/usr/share/nginx/html
+  web:
+    image: httpd
+    ports:
+       - "8080:80"
+  tomcat:
+      image: pritamkhergade/cdecb34-35:mighty-raju
+      ports:
+       - "8081:8080"
+
+volumes:
+  myvol:
+#sudo docker-comopse up -d
+
+ 
